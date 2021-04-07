@@ -1,0 +1,174 @@
+$class: "menu";
+
+%noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none;   /* Chrome/Safari/Opera */
+	-khtml-user-select: none;    /* Konqueror */
+	-moz-user-select: none;      /* Firefox */
+	-ms-user-select: none;       /* Internet Explorer/Edge */
+	user-select: none;           /* Non-prefixed version, currently
+	                              not supported by any browser */
+    cursor: crosshair;
+}
+
+.#{$class} {
+	list-style-type: none;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 0;
+	margin: 0;
+}
+
+.#{$class}-input {
+	display: none;
+
+	@for $i from 1 through $total-pages {
+		&:nth-of-type(#{$i}):checked + .card {
+			left: 0vh;
+		}
+	}
+}
+
+.#{$class}-wrapper {
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	position: fixed;
+	flex-direction: column;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+##{$class}-back-button {
+	display: none;
+
+	&:not(:checked) ~ .#{$class} .#{$class}-item {
+		transform: scaleX(0) scaleY(0);
+	}
+
+	&:checked  ~ .#{$class}-back-button {
+		bottom: -50%;
+	}
+}
+
+.#{$class}-background {
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: fixed;
+	top: 50vh;
+	border-top-left-radius: 100%;
+	transition: 0.35s ease-out;
+	opacity: 0;
+	
+	##{$class}-back-button:checked + & {
+		background: $darken; /* Old browsers */
+		background: -moz-linear-gradient(top,  $darken 0%, $dark-grey 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top,  $darken 0%,$dark-grey 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom,  $darken 0%,$dark-grey 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$darken', endColorstr='$dark-grey',GradientType=0 ); /* IE6-9 */
+
+		border-top-left-radius: 0%;
+		top: 0vh;
+		opacity: 1;
+	}
+}
+
+%#{$class}-item {
+	position: relative;
+	margin: 2vw;
+	transition: .75s;
+
+	@for $i from 1 through $total-pages {
+		&:nth-of-type(#{$i}) {
+			left: 0vh;
+		}
+	}
+}
+
+.#{$class}-item {
+	@extend %#{$class}-item;
+	@extend %willchange;
+
+	margin-bottom: 4vw;
+	text-align: center;
+
+	@for $i from 1 through $total-pages {
+		&:nth-of-type(#{$total-pages - $i}) {
+			transition-delay: 0.025s * $i;
+		}
+	}
+}
+
+$colourIndex: 1;
+@each $colour, $value in $menu-colours {
+	section.#{$class}-item:nth-of-type(12n + #{$colourIndex}) label {
+		background-color: map-get($menu-colours, $colour);
+	}
+	.card:nth-of-type(12n + #{$colourIndex}) {
+		background-color: map-get($menu-colours, $colour);
+	}
+	$colourIndex: $colourIndex + 1;
+}
+
+.#{$class}-link {
+	width: $item-width;
+	height: $item-width;
+	border-radius: 50%;
+	border: 1.5vw solid $white;
+	text-decoration: none;
+	color: $white;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	font-size: 10vw;
+	cursor: pointer;
+	outline: none;
+}
+
+
+.#{$class}-label {
+	@extend %noselect;
+
+	color: $white;
+	padding-top: 0.5rem;
+	font-size: 4vw;
+}
+
+.#{$class}-back-button {
+	position: fixed;
+	width: 20vw;
+	height: 20vw;
+	right: 5vw;
+	bottom: 8vw;
+	color: $white;
+	background-color: $dark-purple;
+	transition: 0.25s;
+	border-radius: 100%;
+	border: 1.5vw solid $white;
+	font-size: 10vw;
+	width: $item-width;
+	height: $item-width;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	cursor: pointer;
+}
+
+.#{$class}-label-content {
+	font-size: 4vw;
+	display: inline-block;
+	width: $item-width;
+	position: absolute;
+	text-align: center;
+	bottom: -6vw;
+	font-family: 'Open Sans', sans-serif;
+}
