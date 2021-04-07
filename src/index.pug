@@ -28,7 +28,13 @@ block content
             .card-body
               h1 #{story.title}
               each line in story.lines
-                h2 !{line}
+                if story.title === 'Lives saved'
+                  h2
+                    b= line.year
+                    span &nbsp;-&nbsp;
+                    span= ~~(line.cars / 218)
+                else
+                  h2 !{line}
           section(class=`menu-item ${className}`)
             label(
               href=`#${story.title}`

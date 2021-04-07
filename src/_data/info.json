@@ -24,7 +24,7 @@
     {
       "title": "Divide",
       "lines": [
-          "Devide the number of cars to the total deaths number",
+          "Divide the number of cars to the total deaths number",
           "to get that each group of 218 gasoline drivers are responsible",
           "for the early death of one of their own."
       ]
@@ -40,14 +40,16 @@
     {
       "title": "Lives saved",
       "lines": [
-          "Year, Model, Sales, Old, <b>Lives</b>",
-          "2012, S,     2650,  5,   <b>60</b>",
-          "2013, S,     22442, 4,   <b>412</b>",
-          "2014, S,     31655, 3,   <b>435</b>",
-          "2015, S,     50446, 3,   <b>462</b>",
-          "2016, S,     37984, 3,   <b>174</b>",
-          "2015, X,     212,   3,   <b>2</b>",
-          "2016, X,     15738, 3,   <b>1</b>"
+        {"year": 2012, "cars": 2650},
+        {"year": 2013, "cars": 22477},
+        {"year": 2014, "cars": 31655},
+        {"year": 2015, "cars": 50580},
+        {"year": 2016, "cars": 76230},
+        {"year": 2017, "cars": 101312},
+        {"year": 2018, "cars": 245240},
+        {"year": 2019, "cars": 367500},
+        {"year": 2020, "cars": 499550},
+        {"year": 2021, "cars": 184800}
       ]
     },
     {
@@ -91,8 +93,7 @@
           "That's right, no JavaScript",
           "Author: Marian Zburlea",
           "Contact: google me",
-          "<a href=https://github.com/marianzburlea/tesla-saves-lives target=_blank>Github project</a>",
-          "<a href=https://github.com/marianzburlea/tesla-saves-lives/blob/master/SOURCES.md target=_blank>Data sources</a>"
+          "<a href=https://github.com/marianzburlea/tesla-saves-lives-refactor target=_blank>Github project</a>"
       ]
     },
     {
@@ -108,8 +109,8 @@
       "class": "menu-item-black",
       "lines": [
           "Tesla saved more than",
-          "<number>1546</number> lives",
-          "and saves <number>4</number> more every day"
+          "<number>7252</number> lives",
+          "and saves <number>20</number> more every day"
       ]
     }
   ]
